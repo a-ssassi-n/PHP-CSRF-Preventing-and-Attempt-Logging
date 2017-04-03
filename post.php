@@ -1,10 +1,7 @@
 <?php
 session_start();
-
 //check if the token is present
-
-if (empty($_POST['token'])) {
-
+if (!empty($_POST['token'])) {
     //Check if session token matches the token posted by form
     
     if (hash_equals($_SESSION['token'], $_POST['token'])) {
@@ -13,7 +10,6 @@ if (empty($_POST['token'])) {
         echo " <br /> $message";
     }
     else {
-
         $webpage = $_SERVER['SCRIPT_NAME']; //name of executed file
         $timestamp = date('m/d/Y h:i:s'); //timestramp
         $filename = 'log.txt'; //log file 
@@ -23,5 +19,4 @@ if (empty($_POST['token'])) {
         fclose($fp);
     }
 }
-
 ?>
